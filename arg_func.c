@@ -59,7 +59,7 @@ int arg_call(char **args, char **front, int *exe_cmd)
 		{
 			free(args[index]);
 			args[index] = NULL;
-			args = replace_aliases(args);
+			args = edit_alias(args);
 			ret = arg_run(args, front, exe_cmd);
 			if (*exe_cmd != 0)
 			{
@@ -77,7 +77,7 @@ int arg_call(char **args, char **front, int *exe_cmd)
 		{
 			free(args[index]);
 			args[index] = NULL;
-			args = replace_aliases(args);
+			args = edit_alias(args);
 			ret = arg_run(args, front, exe_cmd);
 			if (*exe_cmd == 0)
 			{
@@ -92,7 +92,7 @@ int arg_call(char **args, char **front, int *exe_cmd)
 			}
 		}
 	}
-	args = replace_aliases(args);
+	args = edit_alias(args);
 	ret = arg_run(args, front, exe_cmd);
 	return (ret);
 }
@@ -109,7 +109,7 @@ int arg_run(char **args, char **front, int *exe_cmd)
 	int ret, i;
 	int (*builtin)(char **args, char **front);
 
-	builtin = get_builtin(args[0]);
+	builtin = get_system_cmd(args[0]);
 
 	if (builtin)
 	{

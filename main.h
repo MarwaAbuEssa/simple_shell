@@ -77,7 +77,7 @@ int arg_run(char **args, char **front, int *exe_cmd);
 int arg_handle(int *exe_cmd);
 int arg_check(char **args);
 void free_memory_arg(char **args, char **front);
-char **replace_aliases(char **args);
+char **edit_alias(char **args);
 
 /* Utility String */
 int _strlen(const char *str);

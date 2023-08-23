@@ -1,18 +1,16 @@
 #include "main.h"
-int (*get_builtin(char *command))(char **args, char **front);
+int (*get_system_cmd(char *command))(char **args, char **front);
 int hsh_exit(char **args, char **front);
 int hsh_cd(char **args, char __attribute__((__unused__)) **front);
 int hsh_help(char **args, char __attribute__((__unused__)) **front);
 char *name;
 
 /**
- * get_builtin - Matches a command with a corresponding
- *               hsh builtin function.
- * @command: The command to match.
- *
- * Return: A function pointer to the corresponding builtin.
+ * get_system_cmd - get command 
+ * @command: command .
+ * Return: a pointer.
  */
-int (*get_builtin(char *command))(char **args, char **front)
+int (*get_system_cmd(char *command))(char **args, char **front)
 {
 	builtin_t funcs[] = {
 		{"exit", hsh_exit},
@@ -34,16 +32,11 @@ int (*get_builtin(char *command))(char **args, char **front)
 }
 
 /**
- * hsh_exit - Causes normal process termination
- *                for the hsh shell.
- * @args: An array of arguments containing the exit value.
- * @front: A double pointer to the beginning of args.
- *
- * Return: If there are no arguments - -3.
- *         If the given exit value is invalid - 2.
- *         O/w - exits with the given status value.
- *
- * Description: Upon returning -3, the program exits back in the main function.
+ * hsh_exit - shell exit
+ * @args: arguments.
+ * @front: pointer.
+ * Return: 0/-1/-3.
+ * Description: shell exit.
  */
 int hsh_exit(char **args, char **front)
 {
@@ -79,13 +72,10 @@ int hsh_exit(char **args, char **front)
 }
 
 /**
- * hsh_cd - Changes the current directory of the hsh process.
- * @args: An array of arguments.
- * @front: A double pointer to the beginning of args.
- *
- * Return: If the given string is not a directory - 2.
- *         If an exception occurs - -1.
- *         Otherwise - 0.
+ * hsh_cd - change dir command.
+ * @args: arguments.
+ * @front: pointer.
+ * Return: 0/-1/-2.
  */
 int hsh_cd(char **args, char __attribute__((__unused__)) **front)
 {
@@ -156,12 +146,10 @@ int hsh_cd(char **args, char __attribute__((__unused__)) **front)
 }
 
 /**
- * hsh_help - Displays information about hsh builtin commands.
- * @args: An array of arguments.
- * @front: A pointer to the beginning of args.
- *
- * Return: If an exception occurs - -1.
- *         Otherwise - 0.
+ * hsh_help - help cmd.
+ * @args: arguments.
+ * @front: pointer.
+ * Return: -1 / 0.
  */
 int hsh_help(char **args, char __attribute__((__unused__)) **front)
 {

@@ -1,17 +1,14 @@
 #include "main.h"
 
 int hsh_alias(char **args, char __attribute__((__unused__)) **front);
-void set_alias(char *var_name, char *value);
+void add_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
 
 /**
- * hsh_alias - Builtin command that either prints all aliases, specific
- * aliases, or sets an alias.
- * @args: An array of arguments.
- * @front: A double pointer to the beginning of args.
- *
- * Return: If an exception occurs - -1.
- *         Otherwise - 0.
+ * hsh_alias - aliases cmd
+ * @args: arguments.
+ * @front: pointer.
+ * Return: -1/- 0.
  */
 int hsh_alias(char **args, char __attribute__((__unused__)) **front)
 {
@@ -47,18 +44,17 @@ int hsh_alias(char **args, char __attribute__((__unused__)) **front)
 				ret = throw_except(args + i, 1);
 		}
 		else
-			set_alias(args[i], value);
+			add_alias(args[i], value);
 	}
 	return (ret);
 }
 
 /**
- * set_alias - Will either set an existing alias 'name' with a new value,
- * 'value' or creates a new alias with 'name' and 'value'.
- * @var_name: Name of the alias.
- * @value: Value of the alias. First character is a '='.
+ * add_alias - add alias.
+ * @var_name: name.
+ * @value: value.
  */
-void set_alias(char *var_name, char *value)
+void add_alias(char *var_name, char *value)
 {
 	alias_t *temp = aliases;
 	int len, j, k;
@@ -91,8 +87,8 @@ void set_alias(char *var_name, char *value)
 }
 
 /**
- * print_alias - Prints the alias in the format name='value'.
- * @alias: Pointer to an alias.
+ * print_alias - print it .
+ * @alias: pointer.
  */
 void print_alias(alias_t *alias)
 {
@@ -111,13 +107,11 @@ void print_alias(alias_t *alias)
 	free(alias_string);
 }
 /**
- * replace_aliases - Goes through the arguments and replace any matching alias
- * with their value.
- * @args: 2D pointer to the arguments.
- *
- * Return: 2D pointer to the arguments.
+ * edit_alias - edit aliases
+ * @args: arguments.
+ * Return:  pointer.
  */
-char **replace_aliases(char **args)
+char **edit_alias(char **args)
 {
 	alias_t *temp;
 	int i;
