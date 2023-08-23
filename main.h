@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 
-extern char **environ;
+
 extern char *name;
 
 
@@ -50,6 +50,7 @@ typedef struct list_s
 } list_t;
 
 list_t *get_path(char *path);
+extern char **environ;
 int execute(char **args, char **front);
 void free_node_list(list_t *head);
 char *_itoa(int num);
