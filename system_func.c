@@ -12,7 +12,7 @@ char *name;
  */
 int (*get_system_cmd(char *command))(char **args, char **front)
 {
-	builtin_t funcs[] = {
+	system_t funcs[] = {
 		{"exit", hsh_exit},
 		{"env", hsh_env},
 		{"setenv", hsh_setenv},
@@ -66,7 +66,7 @@ int hsh_exit(char **args, char **front)
 		return (throw_except(--args, 2));
 	args -= 1;
 	free_memory_arg(args, front);
-	free_env();
+	env_free();
 	free_alias_list(aliases);
 	exit(num);
 }

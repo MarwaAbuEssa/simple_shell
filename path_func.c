@@ -33,7 +33,7 @@ char *get_command_path(char *cmd)
 
 		if (stat(temp, &st) == 0)
 		{
-			free_list(head);
+			free_node_list(head);
 			return (temp);
 		}
 
@@ -41,7 +41,7 @@ char *get_command_path(char *cmd)
 		free(temp);
 	}
 
-	free_list(head);
+	free_node_list(head);
 
 	return (NULL);
 }
@@ -121,7 +121,7 @@ list_t *get_path(char *path)
 	{
 		if (add_end_node(&head, directories[i]) == NULL)
 		{
-			free_list(head);
+			free_node_list(head);
 			free(directories);
 			return (NULL);
 		}

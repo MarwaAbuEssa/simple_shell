@@ -30,7 +30,7 @@ int except_file_open(char *fpath)
 	_strcpy(exception, name);
 	_strcat(exception, ": ");
 	_strcat(exception, record_str);
-	_strcat(exception, ": Can't open ");
+	_strcat(exception, ": Cannot open ");
 	_strcat(exception, fpath);
 	_strcat(exception, "\n");
 

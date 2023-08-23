@@ -1,7 +1,7 @@
 #include "main.h"
 
 char **_copyenv(void);
-void free_env(void);
+void env_free(void);
 char **_getenv(const char *var);
 
 /**
@@ -40,9 +40,9 @@ char **_copyenv(void)
 }
 
 /**
- * free_env - free environment.
+ * env_free - free environment.
  */
-void free_env(void)
+void env_free(void)
 {
 	int index;
 

@@ -57,7 +57,7 @@ int execute(char **args, char **front)
 			execve(cmd, args, environ);
 			if (errno == EACCES)
 				ret = (throw_except(args, 126));
-			free_env();
+			env_free();
 			free_memory_arg(args, front);
 			free_alias_list(aliases);
 			_exit(ret);
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
 	if (argc != 1)
 	{
 		ret = file_cmds(argv[1], exe_cmd);
-		free_env();
+		env_free();
 		free_alias_list(aliases);
 		return (*exe_cmd);
 	}
@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
 	{
 		while (ret != END_OF_FILE && ret != EXIT)
 			ret = arg_handle(exe_cmd);
-		free_env();
+		env_free();
 		free_alias_list(aliases);
 		return (*exe_cmd);
 	}
@@ -120,13 +120,13 @@ int main(int argc, char *argv[])
 		{
 			if (ret == END_OF_FILE)
 				write(STDOUT_FILENO, new_route, 1);
-			free_env();
+			env_free();
 			free_alias_list(aliases);
 			exit(*exe_cmd);
 		}
 	}
 
-	free_env();
+	env_free();
 	free_alias_list(aliases);
 	return (*exe_cmd);
 }

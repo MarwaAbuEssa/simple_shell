@@ -32,15 +32,15 @@ typedef struct list_s
 } list_t;
 
 /**
- * struct builtin_s - system.
+ * struct system_s - system.
  * @name: name.
  * @f: pointer.
  */
-typedef struct builtin_s
+typedef struct system_s
 {
 	char *name;
 	int (*f)(char **argv, char **front);
-} builtin_t;
+} system_t;
 
 /**
  * struct alias_s - custom struct.
@@ -57,14 +57,14 @@ typedef struct alias_s
 
 alias_t *aliases;
 
-/* Main Helpers */
+/* other utilites */
 ssize_t _getroute(char **routeptr, size_t *n, FILE *stream);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char **_strtok(char *route, char *delimator);
 char *get_command_path(char *cmd);
 list_t *get_path(char *path);
 int execute(char **args, char **front);
-void free_list(list_t *head);
+void free_node_list(list_t *head);
 char *_itoa(int num);
 
 /* utility help and argument function */
@@ -78,7 +78,7 @@ int arg_check(char **args);
 void free_memory_arg(char **args, char **front);
 char **edit_alias(char **args);
 
-/* Utility String */
+/* Utility string */
 int _strlen(const char *str);
 char *_strcat(char *dest, const char *src);
 char *_strncat(char *dest, const char *src, size_t n);
@@ -88,7 +88,7 @@ int _strspn(char *str, char *prefix);
 int _strcmp(char *str1, char *str2);
 int _strncmp(const char *str1, const char *str2, size_t n);
 
-/* Builtins */
+/* system functyions */
 int (*get_system_cmd(char *command))(char **args, char **front);
 int hsh_exit(char **args, char **front);
 int hsh_env(char **args, char __attribute__((__unused__)) **front);
@@ -98,9 +98,8 @@ int hsh_cd(char **args, char __attribute__((__unused__)) **front);
 int hsh_alias(char **args, char __attribute__((__unused__)) **front);
 int hsh_help(char **args, char __attribute__((__unused__)) **front);
 
-/* Builtin Helpers */
 char **_copyenv(void);
-void free_env(void);
+void env_free(void);
 char **_getenv(const char *var);
 
 /* Utility exceptions */
@@ -117,7 +116,7 @@ char *exception_127(char **args);
 alias_t *add_end_alias(alias_t **head, char *name, char *value);
 void free_alias_list(alias_t *head);
 list_t *add_end_node(list_t **head, char *dir);
-void free_list(list_t *head);
+void free_node_list(list_t *head);
 
 /* Utility Help func */
 

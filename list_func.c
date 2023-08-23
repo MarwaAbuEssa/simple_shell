@@ -3,7 +3,7 @@
 alias_t *add_end_alias(alias_t **head, char *name, char *value);
 void free_alias_list(alias_t *head);
 list_t *add_end_node(list_t **head, char *dir);
-void free_list(list_t *head);
+void free_node_list(list_t *head);
 
 /**
  * add_end_alias - add node.
@@ -92,10 +92,10 @@ void free_alias_list(alias_t *head)
 }
 
 /**
- * free_list - free a list .
+ * free_node_list - free a list .
  * @head: head node.
  */
-void free_list(list_t *head)
+void free_node_list(list_t *head)
 {
 	list_t *next;
 

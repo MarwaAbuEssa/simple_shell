@@ -37,7 +37,7 @@ char *exception_env(char **args)
 	_strcat(exception, record_str);
 	_strcat(exception, ": ");
 	_strcat(exception, args[0]);
-	_strcat(exception, ": Unable to add/remove from environment\n");
+	_strcat(exception, ": Unable to set/unset from environment variable\n");
 
 	free(record_str);
 	return (exception);
@@ -130,7 +130,7 @@ char *exception_cd(char **args)
 	if (args[0][0] == '-')
 		_strcat(exception, ": cd: Illegal option ");
 	else
-		_strcat(exception, ": cd: can't cd to ");
+		_strcat(exception, ": cd: cannot cd to ");
 	_strcat(exception, args[0]);
 	_strcat(exception, "\n");
 

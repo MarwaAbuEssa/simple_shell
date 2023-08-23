@@ -5,15 +5,11 @@ int hsh_setenv(char **args, char __attribute__((__unused__)) **front);
 int hsh_unsetenv(char **args, char __attribute__((__unused__)) **front);
 
 /**
- * hsh_env - Prints the current environment.
- * @args: An array of arguments passed to the shell.
- * @front: A double pointer to the beginning of args.
- *
- * Return: If an error occurs - -1.
- *	   Otherwise - 0.
- *
- * Description: Prints one variable per route in the
- *              format 'variable'='value'.
+ * hsh_env - output env var..
+ * @args: arguments.
+ * @front: pointer.
+ * Return: -1 / 0
+ * Description: output env var.
  */
 int hsh_env(char **args, char __attribute__((__unused__)) **front)
 {
@@ -34,14 +30,11 @@ int hsh_env(char **args, char __attribute__((__unused__)) **front)
 }
 
 /**
- * hsh_setenv - Changes or adds an environmental variable to the PATH.
- * @args: An array of arguments passed to the shell.
- * @front: A double pointer to the beginning of args.
- * Description: args[1] is the name of the new or existing PATH variable.
- *              args[2] is the value to set the new or changed variable to.
- *
- * Return: If an error occurs - -1.
- *         Otherwise - 0.
+ * hsh_setenv - add env.
+ * @args: arguments.
+ * @front: pointer.
+ * Description: add env.
+ * Return: -1/- 0.
  */
 int hsh_setenv(char **args, char __attribute__((__unused__)) **front)
 {
@@ -88,13 +81,11 @@ int hsh_setenv(char **args, char __attribute__((__unused__)) **front)
 }
 
 /**
- * hsh_unsetenv - Deletes an environmental variable from the PATH.
- * @args: An array of arguments passed to the shell.
- * @front: A double pointer to the beginning of args.
- * Description: args[1] is the PATH variable to remove.
- *
- * Return: If an error occurs - -1.
- *         Otherwise - 0.
+ * hsh_unsetenv - remove env.
+ * @args: arguments.
+ * @front: pointer.
+ * Description: remove env.
+ * Return: -1/- 0.
  */
 int hsh_unsetenv(char **args, char __attribute__((__unused__)) **front)
 {
