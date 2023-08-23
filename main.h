@@ -15,13 +15,13 @@
 #define EXIT -3
 
 
-/* extern char **environ; */
-#define environ **char
+extern char **environ;
+/* #define environ **char */
 
-/* char *name; */
+extern char *name;
 /* #define name *char */
-/*  int hist */
-#define hist int
+extern int hist;
+/* #define hist int */
 
 /**
  * struct list_s - A new struct type defining a linked list.
