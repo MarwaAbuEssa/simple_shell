@@ -1,8 +1,8 @@
 #include "main.h"
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-void assign_lineptr(char **lineptr, size_t *n, char *buffer, size_t b);
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+void assign_routeptr(char **routeptr, size_t *n, char *buffer, size_t b);
+ssize_t _getroute(char **routeptr, size_t *n, FILE *stream);
 
 /**
  * _realloc - Reallocates a memory block using malloc and free.
@@ -56,21 +56,21 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * assign_lineptr - Reassigns the lineptr variable for _getline.
- * @lineptr: A buffer to store an input string.
- * @n: The size of lineptr.
- * @buffer: The string to assign to lineptr.
+ * assign_routeptr - Reassigns the routeptr variable for _getroute.
+ * @routeptr: A buffer to store an input string.
+ * @n: The size of routeptr.
+ * @buffer: The string to assign to routeptr.
  * @b: The size of buffer.
  */
-void assign_lineptr(char **lineptr, size_t *n, char *buffer, size_t b)
+void assign_routeptr(char **routeptr, size_t *n, char *buffer, size_t b)
 {
-	if (*lineptr == NULL)
+	if (*routeptr == NULL)
 	{
 		if (b > 120)
 			*n = b;
 		else
 			*n = 120;
-		*lineptr = buffer;
+		*routeptr = buffer;
 	}
 	else if (*n < b)
 	{
@@ -78,24 +78,24 @@ void assign_lineptr(char **lineptr, size_t *n, char *buffer, size_t b)
 			*n = b;
 		else
 			*n = 120;
-		*lineptr = buffer;
+		*routeptr = buffer;
 	}
 	else
 	{
-		_strcpy(*lineptr, buffer);
+		_strcpy(*routeptr, buffer);
 		free(buffer);
 	}
 }
 
 /**
- * _getline - Reads input from a stream.
- * @lineptr: A buffer to store the input.
- * @n: The size of lineptr.
+ * _getroute - Reads input from a stream.
+ * @routeptr: A buffer to store the input.
+ * @n: The size of routeptr.
  * @stream: The stream to read from.
  *
  * Return: The number of bytes read.
  */
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
+ssize_t _getroute(char **routeptr, size_t *n, FILE *stream)
 {
 	static ssize_t input;
 	ssize_t ret;
@@ -134,7 +134,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	}
 	buffer[input] = '\0';
 
-	assign_lineptr(lineptr, n, buffer, input);
+	assign_routeptr(routeptr, n, buffer, input);
 
 	ret = input;
 	if (r != 0)

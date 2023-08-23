@@ -89,7 +89,7 @@ int hsh_exit(char **args, char **front)
  */
 int hsh_cd(char **args, char __attribute__((__unused__)) **front)
 {
-	char **dir_info, *new_line = "\n";
+	char **dir_info, *new_route = "\n";
 	char *oldpwd = NULL, *pwd = NULL;
 	struct stat dir;
 
@@ -147,7 +147,7 @@ int hsh_cd(char **args, char __attribute__((__unused__)) **front)
 	if (args[0] && args[0][0] == '-' && args[0][1] != '-')
 	{
 		write(STDOUT_FILENO, pwd, _strlen(pwd));
-		write(STDOUT_FILENO, new_line, 1);
+		write(STDOUT_FILENO, new_route, 1);
 	}
 	free(oldpwd);
 	free(pwd);

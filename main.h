@@ -62,9 +62,9 @@ typedef struct alias_s
 alias_t *aliases;
 
 /* Main Helpers */
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+ssize_t _getroute(char **routeptr, size_t *n, FILE *stream);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char **_strtok(char *line, char *delim);
+char **_strtok(char *route, char *delim);
 char *get_command_path(char *cmd);
 list_t *get_path(char *path);
 int execute(char **args, char **front);
@@ -72,9 +72,9 @@ void free_list(list_t *head);
 char *_itoa(int num);
 
 /* Input Helpers */
-void handle_line(char **line, ssize_t read);
+void imp_route(char **route, ssize_t route_size);
 void var_proxy(char **args, int *exe_cmd);
-char *get_args(char *line, int *exe_cmd);
+char *get_args(char *route, int *exe_cmd);
 int call_args(char **args, char **front, int *exe_cmd);
 int run_args(char **args, char **front, int *exe_cmd);
 int handle_args(int *exe_cmd);

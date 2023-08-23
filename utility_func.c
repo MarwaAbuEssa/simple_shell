@@ -88,56 +88,56 @@ char *env_value(char *start, int len)
 
 /**
  * var_proxy -  variable proxy.
- * @line: a pointer.
+ * @route: a pointer.
  * @exe_cmd: a pointer.
  * Description: variable proxy.
  */
-void var_proxy(char **line, int *exe_cmd)
+void var_proxy(char **route, int *exe_cmd)
 {
 	int j, k = 0, len;
-	char *rproxy = NULL, *old_line = NULL, *new_line;
+	char *rproxy = NULL, *old_route = NULL, *new_route;
 
-	old_line = *line;
-	for (j = 0; old_line[j]; j++)
+	old_route = *route;
+	for (j = 0; old_route[j]; j++)
 	{
-		if (old_line[j] == '$' && old_line[j + 1] &&
-			old_line[j + 1] != ' ')
+		if (old_route[j] == '$' && old_route[j + 1] &&
+			old_route[j + 1] != ' ')
 		{
-			if (old_line[j + 1] == '$')
+			if (old_route[j + 1] == '$')
 			{
 				rproxy = get_pid();
 				k = j + 2;
 			}
-			else if (old_line[j + 1] == '?')
+			else if (old_route[j + 1] == '?')
 			{
 				rproxy = _itoa(*exe_cmd);
 				k = j + 2;
 			}
-			else if (old_line[j + 1])
+			else if (old_route[j + 1])
 			{
-				for (k = j + 1; old_line[k] &&
-								old_line[k] != '$' &&
-								old_line[k] != ' ';
+				for (k = j + 1; old_route[k] &&
+								old_route[k] != '$' &&
+								old_route[k] != ' ';
 					 k++)
 					;
 				len = k - (j + 1);
-				rproxy = env_value(&old_line[j + 1], len);
+				rproxy = env_value(&old_route[j + 1], len);
 			}
-			new_line = malloc(j + _strlen(rproxy) + _strlen(&old_line[k]) + 1);
-			if (!line)
+			new_route = malloc(j + _strlen(rproxy) + _strlen(&old_route[k]) + 1);
+			if (!route)
 				return;
-			new_line[0] = '\0';
-			_strncat(new_line, old_line, j);
+			new_route[0] = '\0';
+			_strncat(new_route, old_route, j);
 			if (rproxy)
 			{
-				_strcat(new_line, rproxy);
+				_strcat(new_route, rproxy);
 				free(rproxy);
 				rproxy = NULL;
 			}
-			_strcat(new_line, &old_line[k]);
-			free(old_line);
-			*line = new_line;
-			old_line = new_line;
+			_strcat(new_route, &old_route[k]);
+			free(old_route);
+			*route = new_route;
+			old_route = new_route;
 			j = -1;
 		}
 	}

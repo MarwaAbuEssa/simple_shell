@@ -55,9 +55,9 @@ int cant_open(char *file_path)
 int proc_file_commands(char *file_path, int *exe_cmd)
 {
 	ssize_t file, b_read, i;
-	unsigned int line_size = 0;
+	unsigned int route_size = 0;
 	unsigned int old_size = 120;
-	char *line, **args, **front;
+	char *route, **args, **front;
 	char buffer[120];
 	int ret;
 
@@ -68,34 +68,34 @@ int proc_file_commands(char *file_path, int *exe_cmd)
 		*exe_cmd = cant_open(file_path);
 		return (*exe_cmd);
 	}
-	line = malloc(sizeof(char) * old_size);
-	if (!line)
+	route = malloc(sizeof(char) * old_size);
+	if (!route)
 		return (-1);
 	do {
 		b_read = read(file, buffer, 119);
-		if (b_read == 0 && line_size == 0)
+		if (b_read == 0 && route_size == 0)
 			return (*exe_cmd);
 		buffer[b_read] = '\0';
-		line_size += b_read;
-		line = _realloc(line, old_size, line_size);
-		_strcat(line, buffer);
-		old_size = line_size;
+		route_size += b_read;
+		route = _realloc(route, old_size, route_size);
+		_strcat(route, buffer);
+		old_size = route_size;
 	} while (b_read);
-	for (i = 0; line[i] == '\n'; i++)
-		line[i] = ' ';
-	for (; i < line_size; i++)
+	for (i = 0; route[i] == '\n'; i++)
+		route[i] = ' ';
+	for (; i < route_size; i++)
 	{
-		if (line[i] == '\n')
+		if (route[i] == '\n')
 		{
-			line[i] = ';';
-			for (i += 1; i < line_size && line[i] == '\n'; i++)
-				line[i] = ' ';
+			route[i] = ';';
+			for (i += 1; i < route_size && route[i] == '\n'; i++)
+				route[i] = ' ';
 		}
 	}
-	var_proxy(&line, exe_cmd);
-	handle_line(&line, line_size);
-	args = _strtok(line, " ");
-	free(line);
+	var_proxy(&route, exe_cmd);
+	imp_route(&route, route_size);
+	args = _strtok(route, " ");
+	free(route);
 	if (!args)
 		return (0);
 	if (check_args(args) != 0)

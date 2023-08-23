@@ -1,6 +1,6 @@
 #include "main.h"
 
-char *get_args(char *line, int *exe_cmd);
+char *get_args(char *route, int *exe_cmd);
 int call_args(char **args, char **front, int *exe_cmd);
 int run_args(char **args, char **front, int *exe_cmd);
 int handle_args(int *exe_cmd);
@@ -9,22 +9,22 @@ int hist; /* Definition here */
 
 /**
  * get_args - Gets a command from standard input.
- * @line: A buffer to store the command.
+ * @route: A buffer to store the command.
  * @exe_cmd: The return value of the last executed command.
  *
  * Return: If an error occurs - NULL.
  *         Otherwise - a pointer to the stored command.
  */
-char *get_args(char *line, int *exe_cmd)
+char *get_args(char *route, int *exe_cmd)
 {
 	size_t n = 0;
 	ssize_t read;
 	char *prompt = "$ ";
 
-	if (line)
-		free(line);
+	if (route)
+		free(route);
 
-	read = _getline(&line, &n, STDIN_FILENO);
+	read = _getroute(&route, &n, STDIN_FILENO);
 	if (read == -1)
 		return (NULL);
 	if (read == 1)
@@ -32,14 +32,14 @@ char *get_args(char *line, int *exe_cmd)
 		hist++;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, prompt, 2);
-		return (get_args(line, exe_cmd));
+		return (get_args(route, exe_cmd));
 	}
 
-	line[read - 1] = '\0';
-	var_proxy(&line, exe_cmd);
-	handle_line(&line, read);
+	route[read - 1] = '\0';
+	var_proxy(&route, exe_cmd);
+	imp_route(&route, read);
 
-	return (line);
+	return (route);
 }
 
 /**
@@ -146,14 +146,14 @@ int run_args(char **args, char **front, int *exe_cmd)
 int handle_args(int *exe_cmd)
 {
 	int ret = 0, index;
-	char **args, *line = NULL, **front;
+	char **args, *route = NULL, **front;
 
-	line = get_args(line, exe_cmd);
-	if (!line)
+	route = get_args(route, exe_cmd);
+	if (!route)
 		return (END_OF_FILE);
 
-	args = _strtok(line, " ");
-	free(line);
+	args = _strtok(route, " ");
+	free(route);
 	if (!args)
 		return (ret);
 	if (check_args(args) != 0)

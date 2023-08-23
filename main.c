@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
 {
 	int ret = 0, retn;
 	int *exe_cmd = &retn;
-	char *prompt = "$ ", *new_line = "\n";
+	char *prompt = "$ ", *new_route = "\n";
 
 	name = argv[0];
 	hist = 1;
@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
 		if (ret == END_OF_FILE || ret == EXIT)
 		{
 			if (ret == END_OF_FILE)
-				write(STDOUT_FILENO, new_line, 1);
+				write(STDOUT_FILENO, new_route, 1);
 			free_env();
 			free_alias_list(aliases);
 			exit(*exe_cmd);

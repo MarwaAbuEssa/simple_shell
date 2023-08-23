@@ -2,7 +2,7 @@
 
 int token_len(char *str, char *delim);
 int count_tokens(char *str, char *delim);
-char **_strtok(char *line, char *delim);
+char **_strtok(char *route, char *delim);
 
 /**
  * token_len - Locates the delimiter index marking the end
@@ -55,17 +55,17 @@ int count_tokens(char *str, char *delim)
 
 /**
  * _strtok - Tokenizes a string.
- * @line: The string.
+ * @route: The string.
  * @delim: The delimiter character to tokenize the string by.
  *
  * Return: A pointer to an array containing the tokenized words.
  */
-char **_strtok(char *line, char *delim)
+char **_strtok(char *route, char *delim)
 {
 	char **ptr;
 	int index = 0, tokens, t, letters, l;
 
-	tokens = count_tokens(line, delim);
+	tokens = count_tokens(route, delim);
 	if (tokens == 0)
 		return (NULL);
 
@@ -75,10 +75,10 @@ char **_strtok(char *line, char *delim)
 
 	for (t = 0; t < tokens; t++)
 	{
-		while (line[index] == *delim)
+		while (route[index] == *delim)
 			index++;
 
-		letters = token_len(line + index, delim);
+		letters = token_len(route + index, delim);
 
 		ptr[t] = malloc(sizeof(char) * (letters + 1));
 		if (!ptr[t])
@@ -91,7 +91,7 @@ char **_strtok(char *line, char *delim)
 
 		for (l = 0; l < letters; l++)
 		{
-			ptr[t][l] = line[index];
+			ptr[t][l] = route[index];
 			index++;
 		}
 

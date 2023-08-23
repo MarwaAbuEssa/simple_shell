@@ -36,11 +36,11 @@ void help_alias(void)
 	char *msg = "alias: alias [NAME[='VALUE'] ...]\n\tHandles aliases.\n";
 
 	write(STDOUT_FILENO, msg, _strlen(msg));
-	msg = "\n\talias: Prints a list of all aliases, one per line, in ";
+	msg = "\n\talias: Prints a list of all aliases, one per route, in ";
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "the format NAME='VALUE'.\n\talias name [name2 ...]:prints";
 	write(STDOUT_FILENO, msg, _strlen(msg));
-	msg = " the aliases name, name2, etc. one per line, in the ";
+	msg = " the aliases name, name2, etc. one per route, in the ";
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "form NAME='VALUE'.\n\talias NAME='VALUE' [...]: Defines";
 	write(STDOUT_FILENO, msg, _strlen(msg));
