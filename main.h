@@ -16,12 +16,9 @@
 
 
 extern char **environ;
-/* #define environ **char */
-
 extern char *name;
-/* #define name *char */
-extern int hist;
-/* #define hist int */
+extern int record;
+
 
 /**
  * struct list_s - A new struct type defining a linked list.
@@ -133,5 +130,5 @@ void help_setenv(void);
 void help_unsetenv(void);
 void help_history(void);
 
-int proc_file_commands(char *file_path, int *exe_cmd);
+int file_cmds(char *fpath, int *exe_cmd);
 #endif /* _MAIN_H_ */

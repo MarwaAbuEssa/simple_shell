@@ -2,7 +2,7 @@
 
 void sig_handler(int sig);
 int execute(char **args, char **front);
-int hist; /* Definition here */
+int record; /* Definition here */
 
 /**
  * sig_handler - Prints a new prompt upon a signal.
@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
 	char *prompt = "$ ", *new_route = "\n";
 
 	name = argv[0];
-	hist = 1;
+	record = 1;
 	aliases = NULL;
 	signal(SIGINT, sig_handler);
 
@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 1)
 	{
-		ret = proc_file_commands(argv[1], exe_cmd);
+		ret = file_cmds(argv[1], exe_cmd);
 		free_env();
 		free_alias_list(aliases);
 		return (*exe_cmd);

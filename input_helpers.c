@@ -5,7 +5,7 @@ int call_args(char **args, char **front, int *exe_cmd);
 int run_args(char **args, char **front, int *exe_cmd);
 int handle_args(int *exe_cmd);
 int check_args(char **args);
-int hist; /* Definition here */
+int record; /* Definition here */
 
 /**
  * get_args - Gets a command from standard input.
@@ -29,7 +29,7 @@ char *get_args(char *route, int *exe_cmd)
 		return (NULL);
 	if (read == 1)
 	{
-		hist++;
+		record++;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, prompt, 2);
 		return (get_args(route, exe_cmd));
@@ -127,7 +127,7 @@ int run_args(char **args, char **front, int *exe_cmd)
 		ret = *exe_cmd;
 	}
 
-	hist++;
+	record++;
 
 	for (i = 0; args[i]; i++)
 		free(args[i]);

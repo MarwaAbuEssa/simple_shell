@@ -2,7 +2,7 @@
 
 char *error_126(char **args);
 char *error_127(char **args);
-int hist; /* Definition here */
+int record; /* Definition here */
 
 /**
  * error_126 - Creates an error message for permission denied failures.
@@ -12,29 +12,29 @@ int hist; /* Definition here */
  */
 char *error_126(char **args)
 {
-	char *error, *hist_str;
+	char *error, *record_str;
 	int len;
 
-	hist_str = _itoa(hist);
-	if (!hist_str)
+	record_str = _itoa(record);
+	if (!record_str)
 		return (NULL);
 
-	len = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 24;
+	len = _strlen(name) + _strlen(record_str) + _strlen(args[0]) + 24;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
-		free(hist_str);
+		free(record_str);
 		return (NULL);
 	}
 
 	_strcpy(error, name);
 	_strcat(error, ": ");
-	_strcat(error, hist_str);
+	_strcat(error, record_str);
 	_strcat(error, ": ");
 	_strcat(error, args[0]);
 	_strcat(error, ": Permission denied\n");
 
-	free(hist_str);
+	free(record_str);
 	return (error);
 }
 
@@ -46,28 +46,28 @@ char *error_126(char **args)
  */
 char *error_127(char **args)
 {
-	char *error, *hist_str;
+	char *error, *record_str;
 	int len;
 
-	hist_str = _itoa(hist);
-	if (!hist_str)
+	record_str = _itoa(record);
+	if (!record_str)
 		return (NULL);
 
-	len = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 16;
+	len = _strlen(name) + _strlen(record_str) + _strlen(args[0]) + 16;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
-		free(hist_str);
+		free(record_str);
 		return (NULL);
 	}
 
 	_strcpy(error, name);
 	_strcat(error, ": ");
-	_strcat(error, hist_str);
+	_strcat(error, record_str);
 	_strcat(error, ": ");
 	_strcat(error, args[0]);
 	_strcat(error, ": not found\n");
 
-	free(hist_str);
+	free(record_str);
 	return (error);
 }

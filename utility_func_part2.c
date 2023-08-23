@@ -94,7 +94,7 @@ void imp_route(char **route, ssize_t route_size)
 }
 
 /**
- * new_route_fun - new length of a route. 
+ * new_route_fun - new length of a route.
  * @route: The route.
  * Return: new route.
  * Description: new length of a route..

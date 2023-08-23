@@ -1,58 +1,52 @@
 #include "main.h"
 
-int cant_open(char *file_path);
-int proc_file_commands(char *file_path, int *exe_cmd);
-int hist; /* Definition here */
+int except_file_open(char *fpath);
+int file_cmds(char *fpath, int *exe_cmd);
+int record; /* Definition here */
 
 /**
- * cant_open - If the file doesn't exist or lacks proper permissions, print
- * a cant open error.
- * @file_path: Path to the supposed file.
- *
+ * except_file_open - file doesn't exist
+ * @fpath: Path .
  * Return: 127.
  */
 
-int cant_open(char *file_path)
+int except_file_open(char *fpath)
 {
-	char *error, *hist_str;
+	char *error, *record_str;
 	int len;
 
-	hist_str = _itoa(hist);
-	if (!hist_str)
+	record_str = _itoa(record);
+	if (!record_str)
 		return (127);
 
-	len = _strlen(name) + _strlen(hist_str) + _strlen(file_path) + 16;
+	len = _strlen(name) + _strlen(record_str) + _strlen(fpath) + 16;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
-		free(hist_str);
+		free(record_str);
 		return (127);
 	}
 
 	_strcpy(error, name);
 	_strcat(error, ": ");
-	_strcat(error, hist_str);
+	_strcat(error, record_str);
 	_strcat(error, ": Can't open ");
-	_strcat(error, file_path);
+	_strcat(error, fpath);
 	_strcat(error, "\n");
 
-	free(hist_str);
+	free(record_str);
 	write(STDERR_FILENO, error, len);
 	free(error);
 	return (127);
 }
 
 /**
- * proc_file_commands - Takes a file and attempts to run the commands stored
- * within.
- * @file_path: Path to the file.
- * @exe_cmd: Return value of the last executed command.
- *
- * Return: If file couldn't be opened - 127.
- *	   If malloc fails - -1.
- *	   Otherwise the return value of the last command ran.
+ * file_cmds - file commands
+ * @fpath: Path to the file.
+ * @exe_cmd: Return value.
+ * Return: -1 or  - 127
  */
-int proc_file_commands(char *file_path, int *exe_cmd)
+int file_cmds(char *fpath, int *exe_cmd)
 {
 	ssize_t file, b_read, i;
 	unsigned int route_size = 0;
@@ -61,11 +55,11 @@ int proc_file_commands(char *file_path, int *exe_cmd)
 	char buffer[120];
 	int ret;
 
-	hist = 0;
-	file = open(file_path, O_RDONLY);
+	record = 0;
+	file = open(fpath, O_RDONLY);
 	if (file == -1)
 	{
-		*exe_cmd = cant_open(file_path);
+		*exe_cmd = except_file_open(fpath);
 		return (*exe_cmd);
 	}
 	route = malloc(sizeof(char) * old_size);

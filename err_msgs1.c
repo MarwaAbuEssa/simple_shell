@@ -5,7 +5,7 @@ char *error_1(char **args);
 char *error_2_exit(char **args);
 char *error_2_cd(char **args);
 char *error_2_syntax(char **args);
-int hist; /* Definition here */
+int record; /* Definition here */
 char *name;
 
 /**
@@ -18,7 +18,7 @@ char *error_env(char **args)
 {
 	char *error, *hist_str;
 	int len;
-	int hist1 = hist;
+	int hist1 = record;
 
 	hist_str = _itoa(hist1);
 	if (!hist_str)
@@ -77,7 +77,7 @@ char *error_2_exit(char **args)
 {
 	char *error, *hist_str;
 	int len;
-	int hist2 = hist;
+	int hist2 = record;
 
 	hist_str = _itoa(hist2);
 	if (!hist_str)
@@ -112,7 +112,7 @@ char *error_2_cd(char **args)
 {
 	char *error, *hist_str;
 	int len;
-	int hist3 = hist;
+	int hist3 = record;
 
 	hist_str = _itoa(hist3);
 	if (!hist_str)
@@ -152,7 +152,7 @@ char *error_2_syntax(char **args)
 {
 	char *error, *hist_str;
 	int len;
-	int hist4 = hist;
+	int hist4 = record;
 
 	hist_str = _itoa(hist4);
 	if (!hist_str)

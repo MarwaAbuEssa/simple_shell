@@ -5,14 +5,11 @@ void assign_routeptr(char **routeptr, size_t *n, char *buffer, size_t b);
 ssize_t _getroute(char **routeptr, size_t *n, FILE *stream);
 
 /**
- * _realloc - Reallocates a memory block using malloc and free.
- * @ptr: A pointer to the memory previously allocated.
- * @old_size: The size in bytes of the allocated space for ptr.
- * @new_size: The size in bytes for the new memory block.
- *
- * Return: If new_size == old_size - ptr.
- *         If new_size == 0 and ptr is not NULL - NULL.
- *         Otherwise - a pointer to the reallocated memory block.
+ * _realloc - Reallocates.
+ * @ptr:  pointer.
+ * @old_size: old size.
+ * @new_size: new size.
+ * Return: size ptr
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
@@ -56,11 +53,11 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * assign_routeptr - Reassigns the routeptr variable for _getroute.
- * @routeptr: A buffer to store an input string.
- * @n: The size of routeptr.
- * @buffer: The string to assign to routeptr.
- * @b: The size of buffer.
+ * assign_routeptr - assigns the routeptr.
+ * @routeptr: route of pointer.
+ * @n: size of routeptr.
+ * @buffer: buffer.
+ * @b: size .
  */
 void assign_routeptr(char **routeptr, size_t *n, char *buffer, size_t b)
 {
@@ -88,12 +85,11 @@ void assign_routeptr(char **routeptr, size_t *n, char *buffer, size_t b)
 }
 
 /**
- * _getroute - Reads input from a stream.
- * @routeptr: A buffer to store the input.
- * @n: The size of routeptr.
- * @stream: The stream to read from.
- *
- * Return: The number of bytes read.
+ * _getroute - input stream.
+ * @routeptr:  buffer .
+ * @n:  size of routeptr.
+ * @stream: The stream .
+ * Return: bytes read.
  */
 ssize_t _getroute(char **routeptr, size_t *n, FILE *stream)
 {
