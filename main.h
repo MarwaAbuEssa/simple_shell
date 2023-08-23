@@ -11,11 +11,7 @@
 #include <errno.h>
 #include <stdio.h>
 
-
-
 extern char *name;
-
-
 /**
  * struct system_s - system.
  * @name: name.
@@ -26,7 +22,6 @@ typedef struct system_s
 	char *name;
 	int (*f)(char **argv, char **front);
 } system_t;
-
 
 #define END_OF_FILE -2
 #define EXIT -3
@@ -50,6 +45,8 @@ typedef struct list_s
 } list_t;
 
 list_t *get_path(char *path);
+
+/* commands func */
 extern char **environ;
 int execute(char **args, char **front);
 void free_node_list(list_t *head);
