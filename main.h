@@ -20,7 +20,7 @@ extern char **environ;
 
 extern char *name;
 /* #define name *char */
-extern int hist;
+/* extern int hist; */
 /* #define hist int */
 
 /**
