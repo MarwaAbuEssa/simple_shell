@@ -19,7 +19,7 @@
 #define environ **char
 
 /* char *name; */
-#define name *char
+/* #define name *char */
 /*  int hist */
 #define hist int
 
