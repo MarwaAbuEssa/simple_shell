@@ -92,7 +92,7 @@ int file_cmds(char *fpath, int *exe_cmd)
 	free(route);
 	if (!args)
 		return (0);
-	if (check_args(args) != 0)
+	if (arg_check(args) != 0)
 	{
 		*exe_cmd = 2;
 		free_memory_arg(args, args);
@@ -106,13 +106,13 @@ int file_cmds(char *fpath, int *exe_cmd)
 		{
 			free(args[i]);
 			args[i] = NULL;
-			ret = call_args(args, front, exe_cmd);
+			ret = arg_call(args, front, exe_cmd);
 			args = &args[++i];
 			i = 0;
 		}
 	}
 
-	ret = call_args(args, front, exe_cmd);
+	ret = arg_call(args, front, exe_cmd);
 
 	free(front);
 	return (ret);

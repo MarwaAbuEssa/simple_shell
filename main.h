@@ -68,14 +68,14 @@ int execute(char **args, char **front);
 void free_list(list_t *head);
 char *_itoa(int num);
 
-/* Input Helpers */
+/* utility help and argument function */
 void imp_route(char **route, ssize_t route_size);
 void var_proxy(char **args, int *exe_cmd);
-char *get_args(char *route, int *exe_cmd);
-int call_args(char **args, char **front, int *exe_cmd);
-int run_args(char **args, char **front, int *exe_cmd);
-int handle_args(int *exe_cmd);
-int check_args(char **args);
+char *arg_get(char *route, int *exe_cmd);
+int arg_call(char **args, char **front, int *exe_cmd);
+int arg_run(char **args, char **front, int *exe_cmd);
+int arg_handle(int *exe_cmd);
+int arg_check(char **args);
 void free_memory_arg(char **args, char **front);
 char **replace_aliases(char **args);
 
@@ -114,11 +114,13 @@ char *exception_syx(char **args);
 char *exception_126(char **args);
 char *exception_127(char **args);
 
-/* Linkedlist Helpers */
+/* list func  */
 alias_t *add_end_alias(alias_t **head, char *name, char *value);
 void free_alias_list(alias_t *head);
 list_t *add_end_node(list_t **head, char *dir);
 void free_list(list_t *head);
+
+/* Utility Help func */
 
 void help_all(void);
 void help_alias(void);

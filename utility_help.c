@@ -7,7 +7,7 @@ void help_exit(void);
 void help_help(void);
 
 /**
- * help_all - Displays all possible builtin hsh commands.
+ * help_all - help all .
  */
 void help_all(void)
 {
@@ -29,7 +29,7 @@ void help_all(void)
 }
 
 /**
- * help_alias - Displays information on the hsh builtin command 'alias'.
+ * help_alias - help 'alias'.
  */
 void help_alias(void)
 {
@@ -51,7 +51,7 @@ void help_alias(void)
 }
 
 /**
- * help_cd - Displays information on the hsh builtin command 'cd'.
+ * help_cd - help 'cd'.
  */
 void help_cd(void)
 {
@@ -71,7 +71,7 @@ void help_cd(void)
 }
 
 /**
- * help_exit - Displays information on the hsh builtin command 'exit'.
+ * help_exit - help 'exit'.
  */
 void help_exit(void)
 {
@@ -87,7 +87,7 @@ void help_exit(void)
 }
 
 /**
- * help_help - Displays information on the hsh builtin command 'help'.
+ * help_help - help 'help'.
  */
 void help_help(void)
 {
