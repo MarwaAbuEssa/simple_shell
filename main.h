@@ -115,9 +115,9 @@ char *exception_126(char **args);
 char *exception_127(char **args);
 
 /* Linkedlist Helpers */
-alias_t *add_alias_end(alias_t **head, char *name, char *value);
+alias_t *add_end_alias(alias_t **head, char *name, char *value);
 void free_alias_list(alias_t *head);
-list_t *add_node_end(list_t **head, char *dir);
+list_t *add_end_node(list_t **head, char *dir);
 void free_list(list_t *head);
 
 void help_all(void);

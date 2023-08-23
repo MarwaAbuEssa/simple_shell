@@ -119,7 +119,7 @@ list_t *get_path(char *path)
 
 	for (i = 0; directories[i]; i++)
 	{
-		if (add_node_end(&head, directories[i]) == NULL)
+		if (add_end_node(&head, directories[i]) == NULL)
 		{
 			free_list(head);
 			free(directories);

@@ -87,7 +87,7 @@ void set_alias(char *var_name, char *value)
 		temp = temp->next;
 	}
 	if (!temp)
-		add_alias_end(&aliases, var_name, new_value);
+		add_end_alias(&aliases, var_name, new_value);
 }
 
 /**

@@ -1,20 +1,18 @@
 #include "main.h"
 
-alias_t *add_alias_end(alias_t **head, char *name, char *value);
+alias_t *add_end_alias(alias_t **head, char *name, char *value);
 void free_alias_list(alias_t *head);
-list_t *add_node_end(list_t **head, char *dir);
+list_t *add_end_node(list_t **head, char *dir);
 void free_list(list_t *head);
 
 /**
- * add_alias_end - Adds a node to the end of a alias_t linked list.
- * @head: A pointer to the head of the list_t list.
- * @name: The name of the new alias to be added.
- * @value: The value of the new alias to be added.
- *
- * Return: If an error occurs - NULL.
- *         Otherwise - a pointer to the new node.
+ * add_end_alias - add node.
+ * @head:  pointer.
+ * @name: name .
+ * @value: a value .
+ * Return: error or NULL.
  */
-alias_t *add_alias_end(alias_t **head, char *name, char *value)
+alias_t *add_end_alias(alias_t **head, char *name, char *value)
 {
 	alias_t *new_node = malloc(sizeof(alias_t));
 	alias_t *last;
@@ -46,14 +44,12 @@ alias_t *add_alias_end(alias_t **head, char *name, char *value)
 }
 
 /**
- * add_node_end - Adds a node to the end of a list_t linked list.
- * @head: A pointer to the head of the list_t list.
- * @dir: The directory path for the new node to contain.
- *
- * Return: If an error occurs - NULL.
- *         Otherwise - a pointer to the new node.
+ * add_end_node - adds  node .
+ * @head:  pointer .
+ * @dir: directory.
+ * Return: error or NULL
  */
-list_t *add_node_end(list_t **head, char *dir)
+list_t *add_end_node(list_t **head, char *dir)
 {
 	list_t *new_node = malloc(sizeof(list_t));
 	list_t *last;
@@ -78,8 +74,8 @@ list_t *add_node_end(list_t **head, char *dir)
 }
 
 /**
- * free_alias_list - Frees a alias_t linked list.
- * @head: THe head of the alias_t list.
+ * free_alias_list - frees  alias  list.
+ * @head: head node of  alias.
  */
 void free_alias_list(alias_t *head)
 {
@@ -96,8 +92,8 @@ void free_alias_list(alias_t *head)
 }
 
 /**
- * free_list - Frees a list_t linked list.
- * @head: The head of the list_t list.
+ * free_list - free a list .
+ * @head: head node.
  */
 void free_list(list_t *head)
 {
