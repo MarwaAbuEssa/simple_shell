@@ -105,7 +105,7 @@ void free_env(void);
 char **_getenv(const char *var);
 
 /* Utility Errors */
-int create_error(char **args, int err);
+int throw_except(char **args, int except);
 char *error_env(char **args);
 char *error_1(char **args);
 char *error_2_exit(char **args);

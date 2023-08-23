@@ -62,7 +62,7 @@ int hsh_exit(char **args, char **front)
 			if (i <= len_of_int && args[0][i] >= '0' && args[0][i] <= '9')
 				num = (num * 10) + (args[0][i] - '0');
 			else
-				return (create_error(--args, 2));
+				return (throw_except(--args, 2));
 		}
 	}
 	else
@@ -70,7 +70,7 @@ int hsh_exit(char **args, char **front)
 		return (-3);
 	}
 	if (num > max - 1)
-		return (create_error(--args, 2));
+		return (throw_except(--args, 2));
 	args -= 1;
 	free_memory_arg(args, front);
 	free_env();
@@ -109,7 +109,7 @@ int hsh_cd(char **args, char __attribute__((__unused__)) **front)
 			else
 			{
 				free(oldpwd);
-				return (create_error(args, 2));
+				return (throw_except(args, 2));
 			}
 		}
 		else
@@ -120,7 +120,7 @@ int hsh_cd(char **args, char __attribute__((__unused__)) **front)
 			else
 			{
 				free(oldpwd);
-				return (create_error(args, 2));
+				return (throw_except(args, 2));
 			}
 		}
 	}

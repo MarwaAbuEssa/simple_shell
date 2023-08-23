@@ -38,9 +38,9 @@ int execute(char **args, char **front)
 	if (!cmd || (access(cmd, F_OK) == -1))
 	{
 		if (errno == EACCES)
-			ret = (create_error(args, 126));
+			ret = (throw_except(args, 126));
 		else
-			ret = (create_error(args, 127));
+			ret = (throw_except(args, 127));
 	}
 	else
 	{
@@ -56,7 +56,7 @@ int execute(char **args, char **front)
 		{
 			execve(cmd, args, environ);
 			if (errno == EACCES)
-				ret = (create_error(args, 126));
+				ret = (throw_except(args, 126));
 			free_env();
 			free_memory_arg(args, front);
 			free_alias_list(aliases);
