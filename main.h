@@ -93,12 +93,12 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 /* Builtins */
 int (*get_builtin(char *command))(char **args, char **front);
 int hsh_exit(char **args, char **front);
-int hsh_env(char **args, char __attribute__((__unused__)) * *front);
-int hsh_setenv(char **args, char __attribute__((__unused__)) * *front);
-int hsh_unsetenv(char **args, char __attribute__((__unused__)) * *front);
-int hsh_cd(char **args, char __attribute__((__unused__)) * *front);
-int hsh_alias(char **args, char __attribute__((__unused__)) * *front);
-int hsh_help(char **args, char __attribute__((__unused__)) * *front);
+int hsh_env(char **args, char __attribute__((__unused__)) **front);
+int hsh_setenv(char **args, char __attribute__((__unused__)) **front);
+int hsh_unsetenv(char **args, char __attribute__((__unused__)) **front);
+int hsh_cd(char **args, char __attribute__((__unused__)) **front);
+int hsh_alias(char **args, char __attribute__((__unused__)) **front);
+int hsh_help(char **args, char __attribute__((__unused__)) **front);
 
 /* Builtin Helpers */
 char **_copyenv(void);
