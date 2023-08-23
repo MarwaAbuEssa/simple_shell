@@ -1,8 +1,5 @@
-# simple_shell
-Create a simple shell project
+# ALX - Simple Shell
 
-
-
-
-Contributors 
-- Marwa AbuEssa
+## Contributors
+* Marwa Abou Essa 
+* Chadia Kharmoudi
