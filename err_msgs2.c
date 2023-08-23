@@ -2,6 +2,7 @@
 
 char *error_126(char **args);
 char *error_127(char **args);
+int hist; /* Definition here */
 
 /**
  * error_126 - Creates an error message for permission denied failures.

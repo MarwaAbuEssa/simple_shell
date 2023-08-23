@@ -2,6 +2,7 @@
 
 void sig_handler(int sig);
 int execute(char **args, char **front);
+int hist; /* Definition here */
 
 /**
  * sig_handler - Prints a new prompt upon a signal.
