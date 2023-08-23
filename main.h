@@ -37,7 +37,7 @@ typedef struct list_s
 /**
  * struct builtin_s - A new struct type defining builtin commands.
  * @name: The name of the builtin command.
- * @f: A function pointer to the builtin command's function.
+ * @f: A function pointer to the builtin command'str function.
  */
 typedef struct builtin_s
 {
@@ -82,15 +82,15 @@ int check_args(char **args);
 void free_memory_arg(char **args, char **front);
 char **replace_aliases(char **args);
 
-/* String functions */
-int _strlen(const char *s);
+/* Utility String */
+int _strlen(const char *str);
 char *_strcat(char *dest, const char *src);
 char *_strncat(char *dest, const char *src, size_t n);
 char *_strcpy(char *dest, const char *src);
-char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
-int _strcmp(char *s1, char *s2);
-int _strncmp(const char *s1, const char *s2, size_t n);
+char *_strchr(char *str, char c);
+int _strspn(char *str, char *prefix);
+int _strcmp(char *str1, char *str2);
+int _strncmp(const char *str1, const char *str2, size_t n);
 
 /* Builtins */
 int (*get_builtin(char *command))(char **args, char **front);
@@ -107,7 +107,7 @@ char **_copyenv(void);
 void free_env(void);
 char **_getenv(const char *var);
 
-/* Error Handling */
+/* Utility Errors */
 int create_error(char **args, int err);
 char *error_env(char **args);
 char *error_1(char **args);

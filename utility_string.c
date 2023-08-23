@@ -6,29 +6,26 @@ char *_strcat(char *dest, const char *src);
 char *_strncat(char *dest, const char *src, size_t n);
 
 /**
- * _strlen - Returns the length of a string.
- * @s: A pointer to the characters string.
- *
- * Return: The length of the character string.
+ * _strlen - string length.
+ * @str: A pointer to the characters string.
+ * Return: string length.
  */
-int _strlen(const char *s)
+int _strlen(const char *str)
 {
 	int length = 0;
 
-	if (!s)
+	if (!str)
 		return (length);
-	for (length = 0; s[length]; length++)
+	for (length = 0; str[length]; length++)
 		;
 	return (length);
 }
 
 /**
- * _strcpy - Copies the string pointed to by src, including the
- *           terminating null byte, to the buffer pointed by des.
- * @dest: Pointer to the destination of copied string.
- * @src: Pointer to the src of the source string.
- *
- * Return: Pointer to dest.
+ * _strcpy - string copy.
+ * @dest: destination.
+ * @src: src.
+ * Return: destination.
  */
 char *_strcpy(char *dest, const char *src)
 {
@@ -41,11 +38,10 @@ char *_strcpy(char *dest, const char *src)
 }
 
 /**
- * _strcat - Concantenates two strings.
- * @dest: Pointer to destination string.
- * @src: Pointer to source string.
- *
- * Return: Pointer to destination string.
+ * _strcat - concantenation.
+ * @dest: destination.
+ * @src: src.
+ * Return: destination.
  */
 char *_strcat(char *dest, const char *src)
 {
@@ -65,13 +61,11 @@ char *_strcat(char *dest, const char *src)
 }
 
 /**
- * _strncat - Concantenates two strings where n number
- *            of bytes are copied from source.
- * @dest: Pointer to destination string.
- * @src: Pointer to source string.
- * @n: n bytes to copy from src.
- *
- * Return: Pointer to destination string.
+ * _strncat - Concantenation with n.
+ * @dest: destination.
+ * @src: src.
+ * @n: n bytes.
+ * Return: destination.
  */
 char *_strncat(char *dest, const char *src, size_t n)
 {
