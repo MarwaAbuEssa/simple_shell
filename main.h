@@ -11,9 +11,6 @@
 #include <errno.h>
 #include <stdio.h>
 
-#define END_OF_FILE -2
-#define EXIT -3
-
 
 extern char **environ;
 extern char *name;
@@ -29,6 +26,10 @@ typedef struct system_s
 	char *name;
 	int (*f)(char **argv, char **front);
 } system_t;
+
+
+#define END_OF_FILE -2
+#define EXIT -3
 
 /* other utilites */
 ssize_t _getroute(char **routeptr, size_t *n, FILE *stream);

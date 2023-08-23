@@ -6,7 +6,7 @@ char **_getenv(const char *var);
 
 /**
  * _copyenv - copy environment.
- * Return: NULL or O/w 
+ * Return: NULL or O/w.
  */
 char **_copyenv(void)
 {
