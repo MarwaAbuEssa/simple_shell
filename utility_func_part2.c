@@ -1,7 +1,7 @@
 #include "main.h"
 
 void imp_route(char **route, ssize_t route_size);
-ssize_t new_route(char *route);
+ssize_t new_route_fun(char *route);
 void check_route(char *route, ssize_t *new_len);
 
 /**
@@ -17,7 +17,7 @@ void imp_route(char **route, ssize_t route_size)
 	size_t i, j;
 	ssize_t new_len;
 
-	new_len = new_route(*route);
+	new_len = new_route_fun(*route);
 	if (new_len == route_size - 1)
 		return;
 	new_route = malloc(new_len + 1);
@@ -94,13 +94,13 @@ void imp_route(char **route, ssize_t route_size)
 }
 
 /**
- * new_route - new length of a route. 
+ * new_route_fun - new length of a route. 
  * @route: The route.
  * Return: new route.
  * Description: new length of a route..
  */
 
-ssize_t new_route(char *route)
+ssize_t new_route_fun(char *route)
 {
 	size_t i;
 	ssize_t new_len = 0;
