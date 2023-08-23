@@ -18,26 +18,24 @@ void sig_handler(int sig)
 }
 
 /**
- * execute - Executes a command in a child process.
+ * execute - Executes a command.
  * @args: An array of arguments.
- * @front: A double pointer to the beginning of args.
- *
- * Return: If an error occurs - a corresponding error code.
- *         O/w - The exit value of the last executed command.
+ * @front: a pointer.
+ * Return:  O/w .
  */
 int execute(char **args, char **front)
 {
 	pid_t child_pid;
 	int status, flag = 0, ret = 0;
-	char *command = args[0];
+	char *cmd = args[0];
 
-	if (command[0] != '/' && command[0] != '.')
+	if (cmd[0] != '/' && cmd[0] != '.')
 	{
 		flag = 1;
-		command = get_location(command);
+		cmd = get_command_path(cmd);
 	}
 
-	if (!command || (access(command, F_OK) == -1))
+	if (!cmd || (access(cmd, F_OK) == -1))
 	{
 		if (errno == EACCES)
 			ret = (create_error(args, 126));
@@ -50,13 +48,13 @@ int execute(char **args, char **front)
 		if (child_pid == -1)
 		{
 			if (flag)
-				free(command);
+				free(cmd);
 			perror("Error child:");
 			return (1);
 		}
 		if (child_pid == 0)
 		{
-			execve(command, args, environ);
+			execve(cmd, args, environ);
 			if (errno == EACCES)
 				ret = (create_error(args, 126));
 			free_env();
@@ -71,16 +69,15 @@ int execute(char **args, char **front)
 		}
 	}
 	if (flag)
-		free(command);
+		free(cmd);
 	return (ret);
 }
 
 /**
- * main - Runs a simple UNIX command interpreter.
- * @argc: The number of arguments supplied to the program.
- * @argv: An array of pointers to the arguments.
- *
- * Return: The return value of the last executed command.
+ * main - Entry Point.
+ * @argc: The number of arguments.
+ * @argv: An array of arguments.
+ * Return: The return value.
  */
 int main(int argc, char *argv[])
 {
