@@ -19,6 +19,22 @@ extern char **environ;
 extern char *name;
 extern int record;
 
+/**
+ * struct system_s - system.
+ * @name: name.
+ * @f: pointer.
+ */
+typedef struct system_s
+{
+	char *name;
+	int (*f)(char **argv, char **front);
+} system_t;
+
+/* other utilites */
+ssize_t _getroute(char **routeptr, size_t *n, FILE *stream);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char **_strtok(char *route, char *delimator);
+char *get_command_path(char *cmd);
 
 /**
  * struct list_s - custom struct.
@@ -31,37 +47,6 @@ typedef struct list_s
 	struct list_s *next;
 } list_t;
 
-/**
- * struct system_s - system.
- * @name: name.
- * @f: pointer.
- */
-typedef struct system_s
-{
-	char *name;
-	int (*f)(char **argv, char **front);
-} system_t;
-
-/**
- * struct alias_s - custom struct.
- * @name: name.
- * @value: value.
- * @next: node pointer.
- */
-typedef struct alias_s
-{
-	char *name;
-	char *value;
-	struct alias_s *next;
-} alias_t;
-
-alias_t *aliases;
-
-/* other utilites */
-ssize_t _getroute(char **routeptr, size_t *n, FILE *stream);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char **_strtok(char *route, char *delimator);
-char *get_command_path(char *cmd);
 list_t *get_path(char *path);
 int execute(char **args, char **front);
 void free_node_list(list_t *head);
@@ -111,6 +96,21 @@ char *exception_cd(char **args);
 char *exception_syx(char **args);
 char *exception_126(char **args);
 char *exception_127(char **args);
+
+/**
+ * struct alias_s - custom struct.
+ * @name: name.
+ * @value: value.
+ * @next: node pointer.
+ */
+typedef struct alias_s
+{
+	char *name;
+	char *value;
+	struct alias_s *next;
+} alias_t;
+
+alias_t *aliases;
 
 /* list func  */
 alias_t *add_end_alias(alias_t **head, char *name, char *value);
