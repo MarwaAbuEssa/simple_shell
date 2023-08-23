@@ -1,7 +1,7 @@
 #include "main.h"
 
 int cant_open(char *file_path);
-int proc_file_commands(char *file_path, int *exe_ret);
+int proc_file_commands(char *file_path, int *exe_cmd);
 int hist; /* Definition here */
 
 /**
@@ -46,13 +46,13 @@ int cant_open(char *file_path)
  * proc_file_commands - Takes a file and attempts to run the commands stored
  * within.
  * @file_path: Path to the file.
- * @exe_ret: Return value of the last executed command.
+ * @exe_cmd: Return value of the last executed command.
  *
  * Return: If file couldn't be opened - 127.
  *	   If malloc fails - -1.
  *	   Otherwise the return value of the last command ran.
  */
-int proc_file_commands(char *file_path, int *exe_ret)
+int proc_file_commands(char *file_path, int *exe_cmd)
 {
 	ssize_t file, b_read, i;
 	unsigned int line_size = 0;
@@ -65,8 +65,8 @@ int proc_file_commands(char *file_path, int *exe_ret)
 	file = open(file_path, O_RDONLY);
 	if (file == -1)
 	{
-		*exe_ret = cant_open(file_path);
-		return (*exe_ret);
+		*exe_cmd = cant_open(file_path);
+		return (*exe_cmd);
 	}
 	line = malloc(sizeof(char) * old_size);
 	if (!line)
@@ -74,7 +74,7 @@ int proc_file_commands(char *file_path, int *exe_ret)
 	do {
 		b_read = read(file, buffer, 119);
 		if (b_read == 0 && line_size == 0)
-			return (*exe_ret);
+			return (*exe_cmd);
 		buffer[b_read] = '\0';
 		line_size += b_read;
 		line = _realloc(line, old_size, line_size);
@@ -92,7 +92,7 @@ int proc_file_commands(char *file_path, int *exe_ret)
 				line[i] = ' ';
 		}
 	}
-	variable_replacement(&line, exe_ret);
+	var_proxy(&line, exe_cmd);
 	handle_line(&line, line_size);
 	args = _strtok(line, " ");
 	free(line);
@@ -100,9 +100,9 @@ int proc_file_commands(char *file_path, int *exe_ret)
 		return (0);
 	if (check_args(args) != 0)
 	{
-		*exe_ret = 2;
-		free_args(args, args);
-		return (*exe_ret);
+		*exe_cmd = 2;
+		free_memory_arg(args, args);
+		return (*exe_cmd);
 	}
 	front = args;
 
@@ -112,13 +112,13 @@ int proc_file_commands(char *file_path, int *exe_ret)
 		{
 			free(args[i]);
 			args[i] = NULL;
-			ret = call_args(args, front, exe_ret);
+			ret = call_args(args, front, exe_cmd);
 			args = &args[++i];
 			i = 0;
 		}
 	}
 
-	ret = call_args(args, front, exe_ret);
+	ret = call_args(args, front, exe_cmd);
 
 	free(front);
 	return (ret);

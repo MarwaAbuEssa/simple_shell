@@ -58,7 +58,7 @@ int execute(char **args, char **front)
 			if (errno == EACCES)
 				ret = (create_error(args, 126));
 			free_env();
-			free_args(args, front);
+			free_memory_arg(args, front);
 			free_alias_list(aliases);
 			_exit(ret);
 		}
@@ -82,7 +82,7 @@ int execute(char **args, char **front)
 int main(int argc, char *argv[])
 {
 	int ret = 0, retn;
-	int *exe_ret = &retn;
+	int *exe_cmd = &retn;
 	char *prompt = "$ ", *new_line = "\n";
 
 	name = argv[0];
@@ -90,43 +90,43 @@ int main(int argc, char *argv[])
 	aliases = NULL;
 	signal(SIGINT, sig_handler);
 
-	*exe_ret = 0;
+	*exe_cmd = 0;
 	environ = _copyenv();
 	if (!environ)
 		exit(-100);
 
 	if (argc != 1)
 	{
-		ret = proc_file_commands(argv[1], exe_ret);
+		ret = proc_file_commands(argv[1], exe_cmd);
 		free_env();
 		free_alias_list(aliases);
-		return (*exe_ret);
+		return (*exe_cmd);
 	}
 
 	if (!isatty(STDIN_FILENO))
 	{
 		while (ret != END_OF_FILE && ret != EXIT)
-			ret = handle_args(exe_ret);
+			ret = handle_args(exe_cmd);
 		free_env();
 		free_alias_list(aliases);
-		return (*exe_ret);
+		return (*exe_cmd);
 	}
 
 	while (1)
 	{
 		write(STDOUT_FILENO, prompt, 2);
-		ret = handle_args(exe_ret);
+		ret = handle_args(exe_cmd);
 		if (ret == END_OF_FILE || ret == EXIT)
 		{
 			if (ret == END_OF_FILE)
 				write(STDOUT_FILENO, new_line, 1);
 			free_env();
 			free_alias_list(aliases);
-			exit(*exe_ret);
+			exit(*exe_cmd);
 		}
 	}
 
 	free_env();
 	free_alias_list(aliases);
-	return (*exe_ret);
+	return (*exe_cmd);
 }

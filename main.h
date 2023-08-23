@@ -73,13 +73,13 @@ char *_itoa(int num);
 
 /* Input Helpers */
 void handle_line(char **line, ssize_t read);
-void variable_replacement(char **args, int *exe_ret);
-char *get_args(char *line, int *exe_ret);
-int call_args(char **args, char **front, int *exe_ret);
-int run_args(char **args, char **front, int *exe_ret);
-int handle_args(int *exe_ret);
+void var_proxy(char **args, int *exe_cmd);
+char *get_args(char *line, int *exe_cmd);
+int call_args(char **args, char **front, int *exe_cmd);
+int run_args(char **args, char **front, int *exe_cmd);
+int handle_args(int *exe_cmd);
 int check_args(char **args);
-void free_args(char **args, char **front);
+void free_memory_arg(char **args, char **front);
 char **replace_aliases(char **args);
 
 /* String functions */
@@ -133,5 +133,5 @@ void help_setenv(void);
 void help_unsetenv(void);
 void help_history(void);
 
-int proc_file_commands(char *file_path, int *exe_ret);
+int proc_file_commands(char *file_path, int *exe_cmd);
 #endif /* _MAIN_H_ */
