@@ -1,6 +1,6 @@
 #include "main.h"
 
-int hsh_alias(char **args, char __attribute__((__unused__)) * *front);
+int hsh_alias(char **args, char __attribute__((__unused__)) **front);
 void set_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
 
@@ -13,7 +13,7 @@ void print_alias(alias_t *alias);
  * Return: If an error occurs - -1.
  *         Otherwise - 0.
  */
-int hsh_alias(char **args, char __attribute__((__unused__)) * *front)
+int hsh_alias(char **args, char __attribute__((__unused__)) **front)
 {
 	alias_t *temp = aliases;
 	int i, ret = 0;
