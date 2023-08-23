@@ -17,10 +17,11 @@
 
 /* extern char **environ; */
 #define environ **char
-/* Global program name */
-char *name;
+
+/* char *name; */
+#define name *char
 /*  int hist */
-#define hist int;
+#define hist int
 
 /**
  * struct list_s - A new struct type defining a linked list.
