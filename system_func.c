@@ -6,7 +6,7 @@ int hsh_help(char **args, char __attribute__((__unused__)) **front);
 char *name;
 
 /**
- * get_system_cmd - get command 
+ * get_system_cmd - get command.
  * @command: command .
  * Return: a pointer.
  */
