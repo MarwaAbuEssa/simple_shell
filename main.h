@@ -21,9 +21,9 @@ extern int record;
 
 
 /**
- * struct list_s - A new struct type defining a linked list.
- * @dir: A directory path.
- * @next: A pointer to another struct list_s.
+ * struct list_s - custom struct.
+ * @dir:  path.
+ * @next: pointer.
  */
 typedef struct list_s
 {
@@ -32,9 +32,9 @@ typedef struct list_s
 } list_t;
 
 /**
- * struct builtin_s - A new struct type defining builtin commands.
- * @name: The name of the builtin command.
- * @f: A function pointer to the builtin command'str function.
+ * struct builtin_s - system.
+ * @name: name.
+ * @f: pointer.
  */
 typedef struct builtin_s
 {
@@ -43,10 +43,10 @@ typedef struct builtin_s
 } builtin_t;
 
 /**
- * struct alias_s - A new struct defining aliases.
- * @name: The name of the alias.
- * @value: The value of the alias.
- * @next: A pointer to another struct alias_s.
+ * struct alias_s - custom struct.
+ * @name: name.
+ * @value: value.
+ * @next: node pointer.
  */
 typedef struct alias_s
 {
@@ -55,7 +55,6 @@ typedef struct alias_s
 	struct alias_s *next;
 } alias_t;
 
-/* Global aliases linked list */
 alias_t *aliases;
 
 /* Main Helpers */
