@@ -90,7 +90,7 @@ int _strcmp(char *str1, char *str2);
 int _strncmp(const char *str1, const char *str2, size_t n);
 
 /* Builtins */
-int (*get_builtin(char *command))(char **args, char **front);
+int (*get_system_cmd(char *command))(char **args, char **front);
 int hsh_exit(char **args, char **front);
 int hsh_env(char **args, char __attribute__((__unused__)) **front);
 int hsh_setenv(char **args, char __attribute__((__unused__)) **front);
