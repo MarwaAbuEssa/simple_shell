@@ -12,7 +12,7 @@ int record; /* Definition here */
 
 int except_file_open(char *fpath)
 {
-	char *error, *record_str;
+	char *exception, *record_str;
 	int len;
 
 	record_str = _itoa(record);
@@ -20,23 +20,23 @@ int except_file_open(char *fpath)
 		return (127);
 
 	len = _strlen(name) + _strlen(record_str) + _strlen(fpath) + 16;
-	error = malloc(sizeof(char) * (len + 1));
-	if (!error)
+	exception = malloc(sizeof(char) * (len + 1));
+	if (!exception)
 	{
 		free(record_str);
 		return (127);
 	}
 
-	_strcpy(error, name);
-	_strcat(error, ": ");
-	_strcat(error, record_str);
-	_strcat(error, ": Can't open ");
-	_strcat(error, fpath);
-	_strcat(error, "\n");
+	_strcpy(exception, name);
+	_strcat(exception, ": ");
+	_strcat(exception, record_str);
+	_strcat(exception, ": Can't open ");
+	_strcat(exception, fpath);
+	_strcat(exception, "\n");
 
 	free(record_str);
-	write(STDERR_FILENO, error, len);
-	free(error);
+	write(STDERR_FILENO, exception, len);
+	free(exception);
 	return (127);
 }
 

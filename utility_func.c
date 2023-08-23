@@ -34,7 +34,7 @@ char *get_pid(void)
 	file = open("/proc/self/stat", O_RDONLY);
 	if (file == -1)
 	{
-		perror("Cant read file");
+		perror("Cannot read file");
 		return (NULL);
 	}
 	buffer = malloc(120);

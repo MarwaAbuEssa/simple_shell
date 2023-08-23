@@ -84,7 +84,7 @@ int hsh_exit(char **args, char **front)
  * @front: A double pointer to the beginning of args.
  *
  * Return: If the given string is not a directory - 2.
- *         If an error occurs - -1.
+ *         If an exception occurs - -1.
  *         Otherwise - 0.
  */
 int hsh_cd(char **args, char __attribute__((__unused__)) **front)
@@ -160,7 +160,7 @@ int hsh_cd(char **args, char __attribute__((__unused__)) **front)
  * @args: An array of arguments.
  * @front: A pointer to the beginning of args.
  *
- * Return: If an error occurs - -1.
+ * Return: If an exception occurs - -1.
  *         Otherwise - 0.
  */
 int hsh_help(char **args, char __attribute__((__unused__)) **front)

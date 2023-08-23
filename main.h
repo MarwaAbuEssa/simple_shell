@@ -104,15 +104,15 @@ char **_copyenv(void);
 void free_env(void);
 char **_getenv(const char *var);
 
-/* Utility Errors */
+/* Utility exceptions */
 int throw_except(char **args, int except);
-char *error_env(char **args);
-char *error_1(char **args);
-char *error_2_exit(char **args);
-char *error_2_cd(char **args);
-char *error_2_syntax(char **args);
-char *error_126(char **args);
-char *error_127(char **args);
+char *exception_env(char **args);
+char *exception_1(char **args);
+char *exception_exit(char **args);
+char *exception_cd(char **args);
+char *exception_syx(char **args);
+char *exception_126(char **args);
+char *exception_127(char **args);
 
 /* Linkedlist Helpers */
 alias_t *add_alias_end(alias_t **head, char *name, char *value);

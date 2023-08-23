@@ -49,7 +49,7 @@ int execute(char **args, char **front)
 		{
 			if (flag)
 				free(cmd);
-			perror("Error child:");
+			perror("Exception child:");
 			return (1);
 		}
 		if (child_pid == 0)
