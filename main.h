@@ -64,7 +64,7 @@ alias_t *aliases;
 /* Main Helpers */
 ssize_t _getroute(char **routeptr, size_t *n, FILE *stream);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char **_strtok(char *route, char *delim);
+char **_strtok(char *route, char *delimator);
 char *get_command_path(char *cmd);
 list_t *get_path(char *path);
 int execute(char **args, char **front);
