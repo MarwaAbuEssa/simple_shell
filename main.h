@@ -14,12 +14,13 @@
 #define END_OF_FILE -2
 #define EXIT -3
 
-/* Global environemnt */
-extern char **environ;
+
+/* extern char **environ; */
+#define environ **char
 /* Global program name */
 char *name;
-/* Global history counter */
-int hist;
+/*  int hist */
+#define hist int;
 
 /**
  * struct list_s - A new struct type defining a linked list.
