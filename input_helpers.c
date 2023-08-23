@@ -1,9 +1,3 @@
-/*
- * File: input_helpers.c
-
- 
- */
-
 #include "main.h"
 
 char *get_args(char *line, int *exe_ret);

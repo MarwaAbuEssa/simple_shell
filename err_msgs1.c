@@ -1,9 +1,3 @@
-/*
- * File: err_msgs1.c
-
- 
- */
-
 #include "main.h"
 
 char *error_env(char **args);

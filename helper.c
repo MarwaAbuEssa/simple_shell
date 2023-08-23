@@ -1,9 +1,3 @@
-/*
- * File: helper.c
-
-
- */
-
 #include "main.h"
 
 void free_args(char **args, char **front);

@@ -1,9 +1,3 @@
-/*
- * File: locate.c
-
- 
- */
-
 #include "main.h"
 
 char *fill_path_dir(char *path);

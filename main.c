@@ -1,9 +1,3 @@
-/*
- * File: main.c
-
- 
- */
-
 #include "main.h"
 
 void sig_handler(int sig);

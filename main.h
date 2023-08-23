@@ -1,12 +1,6 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
-/*
- * File: main.h
-
-
- */
-
 #include <fcntl.h>
 #include <signal.h>
 #include <sys/types.h>

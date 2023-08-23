@@ -1,9 +1,3 @@
-/*
- * File: builtin.c
-
-
- */
-
 #include "main.h"
 
 int hsh_alias(char **args, char __attribute__((__unused__)) * *front);

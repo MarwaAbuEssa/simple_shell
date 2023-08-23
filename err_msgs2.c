@@ -1,9 +1,3 @@
-/*
- * File: err_msgs2.c
-
- 
- */
-
 #include "main.h"
 
 char *error_126(char **args);

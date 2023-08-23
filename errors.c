@@ -1,9 +1,3 @@
-/*
- * File: errors.c
-
- 
- */
-
 #include "main.h"
 
 int num_len(int num);
@@ -68,7 +62,8 @@ char *_itoa(int num)
 	}
 
 	len--;
-	do {
+	do
+	{
 		buffer[len] = (num1 % 10) + '0';
 		num1 /= 10;
 		len--;
@@ -76,7 +71,6 @@ char *_itoa(int num)
 
 	return (buffer);
 }
-
 
 /**
  * create_error - Writes a custom error message to stderr.
@@ -117,5 +111,4 @@ int create_error(char **args, int err)
 	if (error)
 		free(error);
 	return (err);
-
 }

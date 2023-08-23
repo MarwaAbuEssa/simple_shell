@@ -1,9 +1,3 @@
-/*
- * File: str_funcs2.c
-
- 
- */
-
 #include "main.h"
 
 char *_strchr(char *s, char c);

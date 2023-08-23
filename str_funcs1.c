@@ -1,9 +1,3 @@
-/*
- * File: str_funcs1.c
-
- 
- */
-
 #include "main.h"
 
 int _strlen(const char *s);
@@ -59,7 +53,7 @@ char *_strcat(char *dest, const char *src)
 	const char *srcTemp;
 
 	destTemp = dest;
-	srcTemp =  src;
+	srcTemp = src;
 
 	while (*destTemp != '\0')
 		destTemp++;

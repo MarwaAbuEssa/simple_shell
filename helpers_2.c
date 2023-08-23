@@ -1,9 +1,3 @@
-/*
- * File: helpers_2.c
-
-
- */
-
 #include "main.h"
 
 void handle_line(char **line, ssize_t read);

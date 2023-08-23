@@ -1,9 +1,3 @@
-/*
- * File: split.c
-
- 
- */
-
 #include "main.h"
 
 int token_len(char *str, char *delim);
