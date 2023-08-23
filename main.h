@@ -14,7 +14,7 @@
 
 extern char **environ;
 extern char *name;
-extern int record;
+
 
 /**
  * struct system_s - system.
@@ -32,6 +32,7 @@ typedef struct system_s
 #define EXIT -3
 
 /* other utilites */
+extern int record;
 ssize_t _getroute(char **routeptr, size_t *n, FILE *stream);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char **_strtok(char *route, char *delimator);
