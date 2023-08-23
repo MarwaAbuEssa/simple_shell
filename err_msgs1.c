@@ -6,6 +6,7 @@ char *error_2_exit(char **args);
 char *error_2_cd(char **args);
 char *error_2_syntax(char **args);
 int hist; /* Definition here */
+char *name;
 
 /**
  * error_env - Creates an error message for hsh_env errors.
